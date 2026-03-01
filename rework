@@ -19,36 +19,6 @@ local Window = Fluent:CreateWindow({
     UserInfoSubtitleColor = Color3.fromRGB(0, 180, 200)
 })
 
-local TS = game:GetService("TweenService")
-
-local bg = Instance.new("ImageLabel")
-bg.Name = "RedCyberBG"
-bg.Size = UDim2.new(1, 0, 1, 0)
-bg.Position = UDim2.new(0, 0, 0, 0)
-bg.BackgroundTransparency = 1
-bg.ImageTransparency = 1          -- start invisible
-bg.ScaleType = Enum.ScaleType.Crop
-bg.ResampleMode = Enum.ResamplerMode.Pixelated
-bg.ZIndex = -10
-
-
-bg.Image = "rbxassetid://100445510581838"
-
-bg.ImageColor3 = Color3.fromRGB(255, 40, 80)   -- strong red tint
-bg.Parent = Window.Main
-
-
-TS:Create(bg, TweenInfo.new(1.4, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
-    ImageTransparency = 0.72
-}):Play()
-
-
-game:GetService("RunService").RenderStepped:Connect(function()
-    if bg and bg.Parent then
-        local t = tick() * 0.35
-        bg.Position = UDim2.new(0, math.sin(t) * 4, 0, math.cos(t * 0.8) * 4)
-    end
-end)
 
 
 
@@ -2460,7 +2430,7 @@ Window:SelectTab(1)
 
 
 InterfaceManager:SetLibrary(Library)
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+
 
 -- SaveManager (Allows you to have a configuration system)
 -- InterfaceManager (Allows you to have a interface managment system)
@@ -2496,4 +2466,3 @@ Fluent:Notify({
 
 
 SaveManager:LoadAutoloadConfig()
-
